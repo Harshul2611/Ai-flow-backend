@@ -30,6 +30,6 @@ jobs:
                       git pull origin main
                       npm ci
                       npm run build
-                      pm2 restart backend || pm2 start dist/index.js --name backend
+                      pm2 delete all
+                      pm2 start dist/index.js --name backend
                       pm2 save
-                      pm2 logs backend
