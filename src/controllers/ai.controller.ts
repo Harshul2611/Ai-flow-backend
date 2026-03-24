@@ -56,6 +56,7 @@ export const askAiStreamController = async (req: Request, res: Response) => {
     let fullResponse = "";
 
     stream.on("data", (chunk: any) => {
+      console.log(chunk.toString());
       const lines = chunk.toString().split("\n");
       for (const line of lines) {
         if (line.startsWith("data: ")) {
