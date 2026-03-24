@@ -26,12 +26,13 @@ export const askAiStreamController = async (req: Request, res: Response) => {
     }
 
     const { prompt } = validated.data;
+    const corsOrigin = process.env.CORS_ORIGIN;
 
     res.set({
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
-      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Access-Control-Allow-Origin": corsOrigin,
     });
 
     const { data: stream } = await axios.post(
